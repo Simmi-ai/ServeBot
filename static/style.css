@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;   /* horizontal center */
+    align-items: center;     /* vertical center */
+    font-family: Arial;
+    background: #f6e4d1;
+}
+
+#chatbox {
+    width: 50%;
+    height: 90vh;
+    border-radius: 10px;
+    background: rgb(250, 193, 193);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.user {
+    text-align: right;
+    margin: 5px;
+}
+
+.bot {
+    /* display: flex; */
+    text-align: left;
+    margin: 5px;
+}
+
+.bot img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.bubble {
+    display: inline-block;
+    padding: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.bot .bubble {
+    background: #f1f0f0;
+    border-radius: 18px 18px 18px 0px;
+}
+
+.user .bubble {
+    background: #dcf8c6;
+    border-radius: 18px 18px 0px 18px;
+}
+
+.bot .bubble {
+    background: #f1f0f0;
+}
+
+#inputArea {
+    display: flex;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+#inputArea input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-right: 10px;
+}
+
+#inputArea button {
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: none;
+    background: #25d366;
+    color: white;
+    cursor: pointer;
+}

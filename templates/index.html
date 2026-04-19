@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Customer Support Chatbot using Flask and NLP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div id="chatbox">
+    <div id="messages">
+        <div class="bot">
+            <img src="/static/bot.png" alt="bot">
+            <div class="bubble">Hello! How can I help you?</div>
+        </div>
+    </div>
+
+    <div id="inputArea">
+        <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleKey(event)" />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+function sendMessage() {
+    let input = document.getElementById("userInput").value;
+
+    if (input.trim() === "") return;
+
+    let messages = document.getElementById("messages");
+
+    messages.innerHTML += `
+        <div class="user">
+            <div class="bubble">${input}</div>
+        </div>
+    `;
+
+    fetch("/get", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: input })
+    })
+    .then(response => response.json())
+    .then(data => {
+        messages.innerHTML += `
+            <div class="bot">
+                <img src="/static/bot.png" alt="bot">
+                <div class="bubble">${data.reply}</div>
+            </div>
+        `;
+
+        document.getElementById("userInput").value = "";
+        messages.scrollTop = messages.scrollHeight;
+    });
+}
+
+function handleKey(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+}
+</script>
+
+</body>
+</html>
