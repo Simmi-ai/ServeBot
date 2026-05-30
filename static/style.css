@@ -6,16 +6,18 @@ body {
     align-items: center;     /* vertical center */
     font-family: Arial;
     background: #f6e4d1;
+    flex-direction: column;
 }
 
 #chatbox {
     width: 50%;
     height: 90vh;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     background: rgb(250, 193, 193);
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-top: 1px solid #adacac;
 }
 
 #messages {
@@ -45,7 +47,7 @@ body {
 .bubble {
     display: inline-block;
     padding: 10px;
-    max-width: 70%;
+    max-width: 80%;
     word-wrap: break-word;
 }
 
@@ -83,7 +85,33 @@ body {
     padding: 12px 20px;
     border-radius: 25px;
     border: none;
-    background: #25d366;
+    background: #13c253;
     color: white;
     cursor: pointer;
+    font-size: 20px;
+}
+
+.typing .bubble {
+    opacity: 0.7;
+    font-style: italic;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+.chat-header {
+    background: #D1B6F1;
+    color: white;
+    padding: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    width: 47.5%;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #adacac;
 }
